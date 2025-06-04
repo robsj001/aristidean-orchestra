@@ -1,16 +1,18 @@
 <?php 
 $errors = '';
-$myemail = 'yourname@website.com';//<-----Put Your email address here.
+$myemail = 'info@aristideanorchestra.com';//<-----Put Your email address here.
 if(empty($_POST['name'])  || 
    empty($_POST['email']) || 
-   empty($_POST['message']))
+   empty($_POST['subject']) ||
+   empty($_POST['comment']))
 {
     $errors .= "\n Error: all fields are required";
 }
 
 $name = $_POST['name']; 
 $email_address = $_POST['email']; 
-$message = $_POST['message']; 
+$subject = $_POST['subject'];
+$message = $_POST['comment']; 
 
 if (!preg_match(
 "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i", 
@@ -24,7 +26,7 @@ if( empty($errors))
 	$to = $myemail; 
 	$email_subject = "Contact form submission: $name";
 	$email_body = "You have received a new message. ".
-	" Here are the details:\n Name: $name \n Email: $email_address \n Message \n $message"; 
+	" Here are the details:\n Name: $name \n Email: $email_address \n Comment \n $message"; 
 	
 	$headers = "From: $myemail\n"; 
 	$headers .= "Reply-To: $email_address";
